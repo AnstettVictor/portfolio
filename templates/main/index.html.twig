@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
    <body id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
@@ -283,7 +284,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/envato.jpg" alt="" /></a>
+                        <a href="#!"><img class/="img-fluid d-block mx-auto" src="assets/img/logos/envato.jpg" alt="" /></a>
                     </div>
                     <div class="col-md-3 col-sm-6 my-3">
                         <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/designmodo.jpg" alt="" /></a>
@@ -302,13 +303,14 @@
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Contactez Moi</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 class="section-subheading text-muted">je vous recontacterai dans les plus brefs délais.</h3>
                 </div>
-                <form id="contactForm" name="sentMessage" novalidate="novalidate">
+                <form id="contactForm" name="sentMessage" novalidate="novalidate" action="/mail" method="POST">
                     <div class="row align-items-stretch mb-5">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input class="form-control" id="name" type="text" placeholder="Votre Nom *" required="required" data-validation-required-message="Please enter your name." />
+                                <input class="form-control" id="name" type="text" placeholder="Votre Nom *" required="required" data-validation-required-message="Please enter your name."
+                                 />
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="form-group">
@@ -434,5 +436,5 @@
                 </div>
             </div>
         </div>
-        
+ 
 {% endblock %}
