@@ -478,13 +478,19 @@ mark,
   height: auto;
 }
 
+#allocrew {
+  width: 25px;
+  height: 25px;
+
+}
+
 .img-thumbnail {
   padding: 0.25rem;
   background-color: #fff;
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
   max-width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 .figure {
@@ -10253,6 +10259,7 @@ header.masthead .masthead-heading {
   margin-bottom: 2rem;
 }
 .portfolio-modal .modal-content img {
+  
   margin-bottom: 2rem;
 }
 .portfolio-modal .close-modal {
