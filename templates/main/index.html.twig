@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
+{% block csrf_token_widget %}
    <body id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
@@ -14,6 +14,7 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Projets</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Mon parcours</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/pdf">Mon CV</a></li>
                     </ul>
                 </div>
             </div>
@@ -304,8 +305,10 @@
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Contactez Moi</h2>
                     <h3 class="section-subheading text-muted">je vous recontacterai dans les plus brefs délais.</h3>
-                </div>
+                </div>     
+       
                 <form id="contactForm" name="sentMessage" novalidate="novalidate" action="/mail" method="POST">
+                    <input type="hidden"  id="token" name="token" value="{{ csrf_token('email') }}"/>
                     <div class="row align-items-stretch mb-5">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -334,8 +337,10 @@
                         <button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Envoyer</button>
                     </div>
                 </form>
+            
             </div>
         </section>
+       
         <!-- Footer-->
         <footer class="footer py-4">
             <div class="container">
@@ -436,5 +441,17 @@
                 </div>
             </div>
         </div>
- 
+       {% block javascripts %}
+            <!-- Bootstrap core JS-->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+            <!-- Third party plugin JS-->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+            <!-- Contact form JS-->
+            <script src="assets/mail/jqBootstrapValidation.js"></script>
+            <script src="assets/mail/contact_me.js"></script>
+            <!-- Core theme JS-->
+            <script src="js/scripts.js"></script>
+            {% endblock %}
+        {% endblock %}
 {% endblock %}

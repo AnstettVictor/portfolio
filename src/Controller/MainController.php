@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Component\Mime\Email;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -23,8 +24,13 @@ class MainController extends AbstractController
      /**
      * @Route("/mail", name="mail", methods={"POST"})
      */
-    public function mail(MailerInterface $mailer)
+    public function mail(Request $request, MailerInterface $mailer)
     {
+        $submittedToken = $request->request->get('csrfmiddlewaretoken');
+
+        
+        if ($this->isCsrfTokenValid('email', $submittedToken)) {
+        
         $email = (new Email())
         ->from($_POST['email'])
         ->to('anstettdevweb@gmail.com')
@@ -39,6 +45,21 @@ class MainController extends AbstractController
         $mailer->send($email);
 
         return new JsonResponse('ok', 200);
+        }
+
+        return new JsonResponse('token invalid', 300);
+    }
+
+
+
+    /**
+     * @Route("/pdf", name="pdf" )
+     */
+    public function downloadAction()
+    {
+        $pdfPath = $this->getParameter('dir.downloads').'/CVAnstettVictor.pdf';
+
+        return $this->file($pdfPath);
     }
 
 

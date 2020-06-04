@@ -28,6 +28,7 @@ $(function () {
                     phone: phone,
                     email: email,
                     message: message,
+                    csrfmiddlewaretoken: $("input#token").val()
                 },
                 cache: false,
                 success: function () {
